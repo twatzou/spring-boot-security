@@ -1,0 +1,8 @@
+com\itheima\security\springboot\controller\LoginController.class
+com\itheima\security\springboot\dao\UserDao.class
+com\itheima\security\springboot\config\WebSecurityConfig.class
+com\itheima\security\springboot\model\PermissionDto.class
+com\itheima\security\springboot\model\UserDto.class
+com\itheima\security\springboot\SecuritySpringBootApp.class
+com\itheima\security\springboot\service\SpringDataUserDetailsService.class
+com\itheima\security\springboot\config\WebConfig.class
