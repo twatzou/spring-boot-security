@@ -38,15 +38,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
-    @Override
+/*    @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .csrf().disable()
                 .authorizeRequests()
 
-    }
+    }*/
 
-    /*    //安全拦截机制（最重要）
+        //安全拦截机制（最重要）
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
@@ -54,7 +54,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //                .antMatchers("/r/r1").hasAuthority("p2")
 //                .antMatchers("/r/r2").hasAuthority("p2")
                 .antMatchers("/r/**").authenticated()//所有/r/**的请求必须认证通过
-                .anyRequest().permitAll()//除了/r/**，其它的请求可以访问
+                .anyRequest().permitAll()//除了/r/**，其它的请求可以访问,注意位置也有讲究，如果这一个放在开头，那么权限控制就无效，所有的url都是放行了
                 .and()
                 .formLogin()//允许表单登录
                 .loginPage("/login-view")//登录页面
@@ -63,11 +63,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
+
                 .and()
                 .logout()
-                .logoutUrl("/logout")
-                .logoutSuccessUrl("/login-view?logout");
+                .logoutUrl("/logout1")
+                .logoutSuccessUrl("/login-view?logout")
+        .deleteCookies()
+        ;
 
 
-    }*/
+    }
 }

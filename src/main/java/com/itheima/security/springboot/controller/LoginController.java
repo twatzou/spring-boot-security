@@ -41,7 +41,25 @@ public class LoginController {
         return getUsername()+" 访问资源2";
     }
 
-    //获取当前用户信息
+
+    private String getUsername(){
+        String username = null;
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        Object principal = authentication.getPrincipal();
+
+        if (principal == null) {
+            username = "unknown";
+        }
+        if (principal instanceof UserDetails) {
+            UserDetails userDetails = (UserDetails) principal; //注意此处的向下转型
+            username = userDetails.getUsername();
+        } else {
+            username = principal.toString();
+        }
+        return username;
+    }
+/*    //获取当前用户信息
     private String getUsername(){
         String username = null;
         //当前认证通过的用户身份
@@ -58,5 +76,5 @@ public class LoginController {
             username = principal.toString();
         }
         return username;
-    }
+    }*/
 }
